@@ -60,4 +60,4 @@ WORKDIR /home/cryanc
 EXPOSE 8080/tcp
 
 ENTRYPOINT ["/usr/bin/socat"]
-CMD ["TCP4-LISTEN:8080,fork", "SYSTEM:'carl -p',pty"]
+CMD ["TCP4-LISTEN:8080,fork", "SYSTEM:'carl -p',pty,rawer"]
