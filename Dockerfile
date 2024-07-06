@@ -48,7 +48,7 @@ RUN mkdir -p /home/cryanc
 RUN groupadd -g 912 cryanc
 RUN useradd -M -d /home/cryanc -u 912 -g 912 -s /bin/bash cryanc
 
-COPY --from=0 /tmp/${IMAGE}/carl /usr/bin/cryancd
+COPY --from=0 /tmp/${IMAGE}/carl /usr/bin/carl
 
 RUN chown cryanc:cryanc /home/cryanc -R
 
@@ -60,4 +60,4 @@ WORKDIR /home/cryanc
 EXPOSE 8080/tcp
 
 ENTRYPOINT ["/usr/bin/socat"]
-CMD ["TCP4-LISTEN:8080", "SYSTEM:'./carl -p',pty"]
+CMD ["TCP4-LISTEN:8080,fork", "SYSTEM:'carl -p',pty"]
